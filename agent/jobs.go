@@ -104,6 +104,8 @@ func executeJob() {
 					result = commands.Uptime()
 				case "token":
 					result = commands.Token(job.Payload.(jobs.Command))
+				case "wasm":
+					result = commands.RunWasm(job.Payload.(jobs.Command))
 				default:
 					result.Stderr = fmt.Sprintf("unknown module command: %s", job.Payload.(jobs.Command).Command)
 				}
